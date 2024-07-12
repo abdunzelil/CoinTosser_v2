@@ -1,0 +1,334 @@
+[gd_scene load_steps=14 format=3 uid="uid://dkp1bkhgpc0yj"]
+
+[ext_resource type="Texture2D" uid="uid://ckanlwqj7d6w1" path="res://assets/coin.png" id="1_631rh"]
+[ext_resource type="Script" path="res://scripts/battle.gd" id="1_hoxdr"]
+[ext_resource type="Texture2D" uid="uid://cnkuvf1jdi2s4" path="res://assets/dungeon_background.jpg" id="2_q24gq"]
+[ext_resource type="PackedScene" uid="uid://cveyvt1gx4hie" path="res://scenes/player.tscn" id="4_2kwiy"]
+[ext_resource type="AudioStream" uid="uid://ndevtitgf44r" path="res://audio/y2mate.com - Sword SlashSound Effect HD.mp3" id="4_6pcow"]
+[ext_resource type="Texture2D" uid="uid://c5njqq6yv3rgi" path="res://assets/button_texture.PNG" id="5_1jtit"]
+[ext_resource type="PackedScene" uid="uid://dr1nsjtsv7c7p" path="res://scenes/enemy.tscn" id="5_7hvky"]
+[ext_resource type="Texture2D" uid="uid://csfctfrq5tjiw" path="res://assets/button_texture_disabled.png" id="5_dwo67"]
+[ext_resource type="Texture2D" uid="uid://cd7d2aan3abrm" path="res://assets/buttontexture_hover.png" id="5_wpase"]
+[ext_resource type="AudioStream" uid="uid://bxecviwcbbjv4" path="res://audio/y2mate.com - Omega by ScottBuckley    Epic Progressive Music No Copyright .mp3" id="6_11iq2"]
+[ext_resource type="Texture2D" uid="uid://dssx7vtuxbtbj" path="res://assets/endturnbutton_main.png" id="8_q20xw"]
+[ext_resource type="Texture2D" uid="uid://bavr1xlm615av" path="res://assets/endturnbutton_hover.png" id="9_ifeyj"]
+[ext_resource type="Texture2D" uid="uid://4si7kbgyxjnd" path="res://assets/chains.png" id="10_xsl0n"]
+
+[node name="Battle" type="Node2D"]
+script = ExtResource("1_hoxdr")
+
+[node name="DungeonBackground" type="Sprite2D" parent="."]
+modulate = Color(0.377919, 0.377919, 0.377919, 1)
+position = Vector2(578.5, 322)
+scale = Vector2(1.12402, 0.848958)
+texture = ExtResource("2_q24gq")
+
+[node name="OutcomeLabel" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 324.0
+offset_top = 62.0
+offset_right = 364.0
+offset_bottom = 77.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+text = "HEADS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CoinTossButton" type="TextureButton" parent="."]
+offset_left = 98.0
+offset_top = -8.0
+offset_right = 1122.0
+offset_bottom = 1016.0
+scale = Vector2(0.123783, 0.123783)
+texture_normal = ExtResource("1_631rh")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="CoinTossButton"]
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 48.472
+offset_top = 56.5507
+offset_right = 48.472
+offset_bottom = 56.5507
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.882041, 0.882041)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 150
+theme_override_font_sizes/font_size = 270
+text = "5 / 5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="TextureButton" parent="CoinTossButton"]
+layout_mode = 0
+offset_left = 872.496
+offset_top = 266.596
+offset_right = 1954.5
+offset_bottom = 630.596
+scale = Vector2(1.28425, 1.28425)
+texture_normal = ExtResource("8_q20xw")
+texture_hover = ExtResource("9_ifeyj")
+stretch_mode = 0
+
+[node name="tossLabel" type="Label" parent="CoinTossButton"]
+layout_mode = 0
+offset_left = 1155.25
+offset_top = 355.461
+offset_right = 2019.25
+offset_bottom = 638.461
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 100
+theme_override_font_sizes/font_size = 150
+text = "Toss a coin"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 440.0
+offset_top = 17.0
+offset_right = 934.0
+offset_bottom = 308.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_direction = 2
+layout_mode = 2
+
+[node name="HoT_Texture1" type="Sprite2D" parent="VBoxContainer/HBoxContainer2"]
+scale = Vector2(0.08, 0.08)
+centered = false
+
+[node name="HoT_Texture2" type="Sprite2D" parent="VBoxContainer/HBoxContainer2"]
+position = Vector2(80, 0)
+scale = Vector2(0.08, 0.08)
+centered = false
+
+[node name="HoT_Texture3" type="Sprite2D" parent="VBoxContainer/HBoxContainer2"]
+position = Vector2(160, 0)
+scale = Vector2(0.08, 0.08)
+centered = false
+
+[node name="HoT_Texture4" type="Sprite2D" parent="VBoxContainer/HBoxContainer2"]
+position = Vector2(240, 0)
+scale = Vector2(0.08, 0.08)
+centered = false
+
+[node name="HoT_Texture5" type="Sprite2D" parent="VBoxContainer/HBoxContainer2"]
+position = Vector2(320, 0)
+scale = Vector2(0.08, 0.08)
+centered = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="OutcomeHistory" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Last Outcomes: "
+
+[node name="Button" type="TextureButton" parent="."]
+offset_left = 56.0
+offset_top = 522.0
+offset_right = 256.0
+offset_bottom = 614.0
+texture_normal = ExtResource("5_1jtit")
+texture_hover = ExtResource("5_wpase")
+texture_disabled = ExtResource("5_dwo67")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Button"]
+position = Vector2(-185, -534)
+stream = ExtResource("4_6pcow")
+
+[node name="Label" type="Label" parent="Button"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 19.0
+offset_right = 165.0
+offset_bottom = 68.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "(H)
+Deal 5 damage."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Chains" type="Sprite2D" parent="Button"]
+position = Vector2(98, 43)
+texture = ExtResource("10_xsl0n")
+
+[node name="Button2" type="TextureButton" parent="."]
+offset_left = 494.0
+offset_top = 521.0
+offset_right = 694.0
+offset_bottom = 613.0
+texture_normal = ExtResource("5_1jtit")
+texture_hover = ExtResource("5_wpase")
+texture_disabled = ExtResource("5_dwo67")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Button2"]
+position = Vector2(-185, -534)
+stream = ExtResource("4_6pcow")
+
+[node name="Label" type="Label" parent="Button2"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 19.0
+offset_right = 165.0
+offset_bottom = 68.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "(H - H)
+Deal 12 damage."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Chains2" type="Sprite2D" parent="Button2"]
+position = Vector2(101, 44)
+texture = ExtResource("10_xsl0n")
+
+[node name="Button3" type="TextureButton" parent="."]
+offset_left = 922.0
+offset_top = 521.0
+offset_right = 1122.0
+offset_bottom = 613.0
+texture_normal = ExtResource("5_1jtit")
+texture_hover = ExtResource("5_wpase")
+texture_disabled = ExtResource("5_dwo67")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Button3"]
+position = Vector2(-185, -534)
+stream = ExtResource("4_6pcow")
+
+[node name="Label" type="Label" parent="Button3"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 19.0
+offset_right = 165.0
+offset_bottom = 68.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "(H - H - H)
+Deal 25 damage."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Chains3" type="Sprite2D" parent="Button3"]
+position = Vector2(100, 43)
+texture = ExtResource("10_xsl0n")
+
+[node name="Button4" type="TextureButton" parent="."]
+offset_left = 277.0
+offset_top = 521.0
+offset_right = 477.0
+offset_bottom = 613.0
+texture_normal = ExtResource("5_1jtit")
+texture_hover = ExtResource("5_wpase")
+texture_disabled = ExtResource("5_dwo67")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Button4"]
+position = Vector2(-185, -534)
+stream = ExtResource("4_6pcow")
+
+[node name="Label" type="Label" parent="Button4"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 19.0
+offset_right = 165.0
+offset_bottom = 68.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "(T)
+Deal 25 damage."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Chains4" type="Sprite2D" parent="Button4"]
+position = Vector2(100, 43)
+texture = ExtResource("10_xsl0n")
+
+[node name="Button5" type="TextureButton" parent="."]
+offset_left = 709.0
+offset_top = 521.0
+offset_right = 909.0
+offset_bottom = 613.0
+texture_normal = ExtResource("5_1jtit")
+texture_hover = ExtResource("5_wpase")
+texture_disabled = ExtResource("5_dwo67")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Button5"]
+position = Vector2(-185, -534)
+stream = ExtResource("4_6pcow")
+
+[node name="Label" type="Label" parent="Button5"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 19.0
+offset_right = 165.0
+offset_bottom = 68.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "(H - T)
+Deal 25 damage."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Chains5" type="Sprite2D" parent="Button5"]
+position = Vector2(100, 43)
+texture = ExtResource("10_xsl0n")
+
+[node name="EndTurn" type="TextureButton" parent="."]
+offset_left = 467.0
+offset_top = 409.0
+offset_right = 705.0
+offset_bottom = 505.0
+scale = Vector2(0.848979, 0.823778)
+texture_normal = ExtResource("8_q20xw")
+texture_hover = ExtResource("9_ifeyj")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="EndTurn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "END TURN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player" parent="." instance=ExtResource("4_2kwiy")]
+position = Vector2(225, 319)
+scale = Vector2(0.772875, 0.772875)
+
+[node name="Enemy" parent="." instance=ExtResource("5_7hvky")]
+position = Vector2(927, 320)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_11iq2")
+volume_db = -5.0
+autoplay = true
+
+[connection signal="pressed" from="CoinTossButton" to="." method="_on_coin_toss_button_pressed"]
+[connection signal="pressed" from="CoinTossButton/Button" to="." method="_on_coin_toss_button_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="Button5" to="." method="_on_button_5_pressed"]
+[connection signal="pressed" from="EndTurn" to="." method="_on_end_turn_pressed"]
